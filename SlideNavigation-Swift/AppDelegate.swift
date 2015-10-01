@@ -16,6 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let leftMenu=(storyboard.instantiateViewControllerWithIdentifier("LeftSideViewController"))
+
+        let rightMenu=(storyboard.instantiateViewControllerWithIdentifier("RightSideViewController"))
+
+        
+        SlideNavigationController .sharedInstance().rightMenu = rightMenu;
+        SlideNavigationController.sharedInstance().leftMenu = leftMenu;
+        
+        
+        self.window?.rootViewController=SlideNavigationController.sharedInstance();
         return true
     }
 
